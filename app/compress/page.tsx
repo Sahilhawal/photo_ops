@@ -5,11 +5,11 @@ import Image from "next/image";
 import { useState } from "react";
 
 export default function Page() {
-  const [uploadedImage, setUploadedImage] = useState(null);
-  const [compressionRatio, setCompressionRatio] = useState(50);
-  const [preview, setPreview] = useState(null);
-  const [processedImage, setProcessedImage] = useState(null);
-  const [convertedImageSize, setConvertedImageSize] = useState("");
+  const [uploadedImage, setUploadedImage] = useState<any>(null);
+  const [compressionRatio, setCompressionRatio] = useState<any>(50);
+  const [preview, setPreview] = useState<any>(null);
+  const [processedImage, setProcessedImage] = useState<any>(null);
+  const [convertedImageSize, setConvertedImageSize] = useState<any>("");
 
   const handleFileChange = (file: any) => {
     if (file) {
@@ -43,9 +43,9 @@ export default function Page() {
   return (
     <div>
       {uploadedImage === null ? (
-        <div class="flex items-center justify-center w-[400px]">
+        <div className="flex items-center justify-center w-[400px]">
           <label
-            for="dropzone-file"
+            htmlFor="dropzone-file"
             className="flex flex-col items-center justify-center w-full h-64 border-2 border-primary-300 border-dashed rounded-lg cursor-pointer bg-primary dark:hover:bg-primary-800 dark:bg-primary-700 hover:bg-primary-100 dark:border-primary-600 dark:hover:border-primary-500 dark:hover:bg-primary-600"
           >
             <div className="flex flex-col items-center justify-center pt-5 pb-6">
@@ -76,7 +76,7 @@ export default function Page() {
               id="dropzone-file"
               type="file"
               className="hidden"
-              onChange={(event) => handleFileChange(event.target.files[0])}
+              onChange={(event: any) => handleFileChange(event.target.files[0])}
             />
           </label>
         </div>
