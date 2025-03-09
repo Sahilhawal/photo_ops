@@ -27,7 +27,14 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <div data-theme="silk">
+          <div className="navbar bg-base-100 shadow-sm">
+            <a className="btn btn-ghost text-xl">daisyUI</a>
+          </div>
+          <div className="grid place-content-center border-t border-base-300 h-[calc(100vh-64px)]">
+            {children}
+          </div>
+        </div>
       </body>
     </html>
   );
