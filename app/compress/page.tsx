@@ -27,10 +27,10 @@ export default function Page() {
   };
 
   const handleDownload = () => {
-    if (!processedImageUrl) return;
+    if (!processedImage) return;
 
     const a = document.createElement("a");
-    a.href = processedImageUrl;
+    a.href = processedImage;
     a.download = "processed-image.jpg";
     document.body.appendChild(a);
     a.click();
