@@ -26,6 +26,17 @@ export default function Page() {
     setProcessedImage(null);
   };
 
+  const handleDownload = () => {
+    if (!processedImageUrl) return;
+
+    const a = document.createElement("a");
+    a.href = processedImageUrl;
+    a.download = "processed-image.jpg";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  };
+
   const handleUpload = async () => {
     try {
       const response = await compressFile(uploadedImage, compressionRatio);
@@ -117,7 +128,15 @@ export default function Page() {
                 width={400}
                 height={400}
               />
-              <span>{convertedImageSize}</span>
+              <div className="w-full flex justify-between">
+                <span>Size: {convertedImageSize}</span>
+                <button
+                  className="btn btn-primary"
+                  onClick={() => handleDownload()}
+                >
+                  Download
+                </button>
+              </div>
             </div>
           )}
         </div>
