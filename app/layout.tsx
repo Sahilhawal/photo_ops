@@ -29,7 +29,7 @@ export default function RootLayout({
       >
         <div data-theme="silk">
           <div className="navbar bg-base-100 shadow-sm">
-            <a className="btn btn-ghost text-xl">daisyUI</a>
+            <a className="btn btn-ghost text-xl">PhotoOps</a>
           </div>
           <div className="grid place-content-center border-t border-base-300 h-[calc(100vh-64px)]">
             {children}
