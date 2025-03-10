@@ -1,6 +1,9 @@
 "use client";
 import { DragAndDrop } from "@/src/components/dragAndDrop";
-import { compressImage } from "@/src/services/imageProcessing.services";
+import {
+  compressFile,
+  compressImage,
+} from "@/src/services/imageProcessing.services";
 import { convertBytes } from "@/src/utils/convert";
 import Image from "next/image";
 import { useState } from "react";
@@ -40,7 +43,7 @@ export default function Page() {
 
   const handleUpload = async () => {
     try {
-      const blob = await compressImage(uploadedImage, compressionRatio);
+      const blob = await compressFile(uploadedImage, compressionRatio);
       console.log("blob size: ", blob.size);
       setConvertedImageSize(convertBytes(blob.size));
       const imageUrl = URL.createObjectURL(blob);

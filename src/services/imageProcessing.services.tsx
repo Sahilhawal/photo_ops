@@ -1,4 +1,7 @@
-export const compressImage = async (file: File, quality: number): Promise<Blob> => {
+export const compressImage = async (
+  file: File,
+  quality: number,
+): Promise<Blob> => {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
     reader.readAsDataURL(file);
@@ -29,11 +32,30 @@ export const compressImage = async (file: File, quality: number): Promise<Blob> 
             }
           },
           "image/jpeg",
-          quality / 100 // Convert integer (0-100) to decimal (0-1)
+          quality / 100, // Convert integer (0-100) to decimal (0-1)
         );
       };
     };
 
     reader.onerror = (error) => reject(error);
   });
+};
+
+export const compressFile = async (image: any, quality: number) => {
+  const formData = new FormData();
+  formData.append("file", image);
+
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/compress/?quality=${quality}`,
+    {
+      method: "POST",
+      body: formData,
+    },
+  );
+
+  if (!response.ok) {
+    throw new Error("Failed to process image");
+  }
+
+  return response.blob();
 };
