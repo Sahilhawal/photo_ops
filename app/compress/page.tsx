@@ -1,9 +1,6 @@
 "use client";
 import { DragAndDrop } from "@/src/components/dragAndDrop";
-import {
-  compressFile,
-  compressImage,
-} from "@/src/services/imageProcessing.services";
+import { compressFile } from "@/src/services/imageProcessing.services";
 import { convertBytes } from "@/src/utils/convert";
 import Image from "next/image";
 import { useState } from "react";
